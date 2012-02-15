@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title -%} Rosetta {%- endblock %}
+{% block content -%}
+  <h1>Rosetta Topic List</h1>
+    <ul>
+      {% for i in topics %}
+      <li><a href="{{ url_for('topic', topic_id=i.id) }}">{{ i.title }}</a></li>
+      {% endfor %}
+    </ul>
+    <a class="btn" href="{{ url_for('write_topic') }}">Write a post</a>
+{%- endblock %}
