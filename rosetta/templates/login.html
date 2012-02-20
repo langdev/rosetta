@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content -%}
+  <h1>Login</h1>
+  <form action="{{ url_for('sso_login') }}" method="post">
+    {% if error -%}
+      <p class="error">{{ error }}</p>
+    {%- endif %}
+    <label for="login-username">Username</label>
+    <input id="login-username" type="text" name="username"
+           value="{{ username }}" />
+    <label for="login-password">Password</label>
+    <input id="login-password" type="password" name="password" />
+    <button type="submit">Login</button>
+  </form>
+{%- endblock %}
