@@ -53,6 +53,19 @@ def write_topic():
     return render_template('write.html')
 
 
+@app.route('/topic', methods=['POST'])
+@login_required
+def add_topic():
+    title = request.form['title']
+    if title:
+        topic = Topic(title=title)
+        db.session.add(topic)
+        db.session.flush()
+        return redirect(url_for('topic', topic_id=topic.id))
+    else:
+        return render_template('write.html')
+
+
 @app.route('/login')
 def login_form():
     if 'username' in session:

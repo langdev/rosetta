@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content -%}
+  <h1>Write a new topic</h1>
+  <form action="{{ url_for('add_topic') }}" method="post">
+    <label for="form-title">Title</label>
+    <input id="form-title" type="text" name="title" />
+    <button type="submit">Write</button>
+  </form>
+{%- endblock %}
