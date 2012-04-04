@@ -28,7 +28,8 @@ def valid_login(username, password):
     payload = hmac.new(app.config['LANGDEV_SECRET_KEY'], hashed_password,
                        digestmod=hashlib.sha1).hexdigest()
     result = requests.post(url, data={'password': payload},
-                                headers={'Accept': 'application/json'})
+                                headers={'Accept': 'application/json'},
+                                allow_redirects=True)
     if result.status_code == requests.codes.ok:
         return json.loads(result.content)
     else:
